@@ -1,0 +1,827 @@
+{
+  "schema": "gigalab-blueprint/1",
+  "status": "confirmed",
+  "made": "2026-10-22",
+  "made_with": "GigaLab Module 8 (SaaS Builder Lab)",
+  "product": {
+    "name": "NIVORA",
+    "one_liner": "AI order & Profit Assistant yg menukarkan mesej tempahan , which is dia mesej dalam system tu ,kepada pelan pengeluaran dan pengiraan kos untuk penjual makanan di malaysia",
+    "customer": "Penjual kuih, peniaga, business owner",
+    "problem": "business owner does not need to do their own Business financial projections / Business calculations.",
+    "today": "By taking the recipe n business calculation by their own",
+    "tasks_per_customer_month": 300,
+    "customers_year_one": 300,
+    "problem_cost_rm_month": 300,
+    "languages": "both",
+    "channel": "web"
+  },
+  "requirements": {
+    "version_1": "must",
+    "roles": [
+      {
+        "name": "OWNER",
+        "what": "RUNS THE BUSINESS AND PAY"
+      }
+    ],
+    "features": [
+      {
+        "id": "F1",
+        "name": "AI MESSAGE PARSER",
+        "what": "Converts raw text order message into structured data (product name , quantity,date,addres ,recipe)",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": true,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC1",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f1_ai_message_parser.py"
+        }
+      },
+      {
+        "id": "F2",
+        "name": "Order Management Dashboard",
+        "what": "Display clean overview of all active orders, payment statuses and delivery dates in one places",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC2",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f2_order_management_dashboard.py"
+        }
+      },
+      {
+        "id": "F3",
+        "name": "Recipe & Ingredient Costing",
+        "what": "Records raw material lists and ingredient costs per recipe to calculate unit production costs.",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": true,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC3",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f3_recipe_ingredient_costing.py"
+        }
+      },
+      {
+        "id": "F4",
+        "name": "Production Planning",
+        "what": "Aggregates all orders for a specific date to calculate the total batch quantities required for cooking/baking.",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC4",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f4_production_planning.py"
+        }
+      },
+      {
+        "id": "F5",
+        "name": "Automatic Grocery List",
+        "what": "Automatically generates a raw material shopping list based on daily or weekly production plans",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC5",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f5_automatic_grocery_list.py"
+        }
+      },
+      {
+        "id": "F6",
+        "name": "Profit & Loss Calculator",
+        "what": "Calculates estimated net profit per order after deducting raw material costs.",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC6",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f6_profit_loss_calculator.py"
+        }
+      },
+      {
+        "id": "F7",
+        "name": "Customer Database",
+        "what": "Stores basic customer profiles (name, phone number, order history, and address) for repeat orders.",
+        "priority": "should",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": false
+      },
+      {
+        "id": "F8",
+        "name": "Payment Status Tracker",
+        "what": "Tracks customer payment statuses (deposit paid, unpaid, or fully paid) to prevent revenue leakage.",
+        "priority": "should",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": false
+      },
+      {
+        "id": "F9",
+        "name": "MESSAGE BOX",
+        "what": "WHERE CUSTOMER CAN CHHAT OWNER STATING THEIR ORDERS ",
+        "priority": "must",
+        "used_by": "OWNER",
+        "uses_ai": false,
+        "in_version_1": true,
+        "use_case": {
+          "id": "UC7",
+          "goal": "",
+          "steps": [],
+          "errors": [],
+          "acceptance": [],
+          "test_file": "tests/acceptance/test_f9_message_box.py"
+        }
+      }
+    ],
+    "data": [
+      {
+        "name": "Customer",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          }
+        ],
+        "relations": [
+          {
+            "kind": "belongs to",
+            "to": "business"
+          }
+        ]
+      }
+    ],
+    "integrations": [
+      "sheets",
+      "calendar",
+      "payment"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "out_of_scope": []
+  },
+  "stack": {
+    "confirmed": true,
+    "frontend": {
+      "value": "html",
+      "label": "Plain HTML, CSS and JavaScript"
+    },
+    "backend": {
+      "value": "fastapi",
+      "label": "Python: FastAPI"
+    },
+    "database": {
+      "value": "sqlite",
+      "label": "SQLite"
+    },
+    "extras": [],
+    "hosting": {
+      "value": "paas",
+      "label": "A hosting platform (PaaS)"
+    },
+    "commands": {
+      "install": "pip install -r requirements.txt",
+      "test": "pytest -q",
+      "run": "uvicorn app.main:app --reload"
+    },
+    "acceptance_tests": "tests/acceptance"
+  },
+  "quality": {
+    "top_three": [
+      {
+        "id": "security",
+        "title": "Security",
+        "targets": [
+          "Every input is validated on the server",
+          "Secrets live only in environment variables, never in code, logs or the browser",
+          "HTTPS only, secure cookies and CSRF protection",
+          "Rate limits on sign-in and on every public route",
+          "A dependency audit runs on every build (pip-audit or npm audit)",
+          "Reviewed against the OWASP Top 10 before launch",
+          "Prompt-injection tests: text from customers never changes the rules"
+        ]
+      },
+      {
+        "id": "reliability",
+        "title": "Reliability",
+        "targets": [
+          "Every error gives a clear message, and nothing is left half-saved",
+          "Calls to outside services time out and retry with back-off",
+          "Daily backups, restored once to prove they work",
+          "Payments and actions are idempotent: a retry never runs them twice",
+          "The AI release gate passes before every release"
+        ]
+      },
+      {
+        "id": "performance",
+        "title": "Performance",
+        "targets": [
+          "p95 page load under 2 seconds on a phone over 4G",
+          "p95 API response under 500 ms, not counting AI calls",
+          "A database index for every list and search",
+          "An AI reply starts within 5 seconds, streamed or with progress shown"
+        ]
+      }
+    ],
+    "baseline": [
+      {
+        "id": "availability",
+        "title": "Availability",
+        "baseline": "An uptime check with an alert"
+      },
+      {
+        "id": "scalability",
+        "title": "Scalability",
+        "baseline": "No state kept in the app server's memory"
+      },
+      {
+        "id": "privacy",
+        "title": "Privacy and PDPA",
+        "baseline": "A privacy notice, and no personal data in logs"
+      },
+      {
+        "id": "usability",
+        "title": "Usability and accessibility",
+        "baseline": "Works on a phone; error messages say what to do"
+      },
+      {
+        "id": "maintainability",
+        "title": "Maintainability",
+        "baseline": "Every feature has acceptance tests"
+      },
+      {
+        "id": "observability",
+        "title": "Observability",
+        "baseline": "One safe log line per request"
+      },
+      {
+        "id": "cost",
+        "title": "Cost efficiency",
+        "baseline": "Know the monthly bill before it arrives"
+      }
+    ]
+  },
+  "core": {
+    "authentication": {
+      "methods": [
+        "magic",
+        "google",
+        "phone",
+        "password"
+      ],
+      "options": [
+        "verify",
+        "lockout",
+        "2fa",
+        "reset"
+      ]
+    },
+    "authorization": {
+      "deny_by_default": true,
+      "tenant_isolation": "always",
+      "tenancy": "shared",
+      "permissions": [
+        {
+          "id": "f:AI MESSAGE PARSER",
+          "label": "AI MESSAGE PARSER"
+        },
+        {
+          "id": "f:Order Management Dashboard",
+          "label": "Order Management Dashboard"
+        },
+        {
+          "id": "f:Recipe & Ingredient Costing",
+          "label": "Recipe & Ingredient Costing"
+        },
+        {
+          "id": "f:Production Planning",
+          "label": "Production Planning"
+        },
+        {
+          "id": "f:Automatic Grocery List",
+          "label": "Automatic Grocery List"
+        },
+        {
+          "id": "f:Profit & Loss Calculator",
+          "label": "Profit & Loss Calculator"
+        },
+        {
+          "id": "f:Customer Database",
+          "label": "Customer Database"
+        },
+        {
+          "id": "f:Payment Status Tracker",
+          "label": "Payment Status Tracker"
+        },
+        {
+          "id": "f:MESSAGE BOX",
+          "label": "MESSAGE BOX"
+        },
+        {
+          "id": "team",
+          "label": "Manage team and roles"
+        },
+        {
+          "id": "billing",
+          "label": "Billing and plan"
+        },
+        {
+          "id": "settings",
+          "label": "Business settings"
+        },
+        {
+          "id": "ai",
+          "label": "AI settings"
+        },
+        {
+          "id": "usage",
+          "label": "Usage and logs"
+        },
+        {
+          "id": "export",
+          "label": "Export data"
+        }
+      ],
+      "matrix": {
+        "OWNER": [
+          "f:AI MESSAGE PARSER",
+          "f:Order Management Dashboard",
+          "f:Recipe & Ingredient Costing",
+          "f:Production Planning",
+          "f:Automatic Grocery List",
+          "f:Profit & Loss Calculator",
+          "f:Customer Database",
+          "f:Payment Status Tracker",
+          "f:MESSAGE BOX",
+          "team",
+          "billing",
+          "settings",
+          "ai",
+          "usage",
+          "export"
+        ]
+      },
+      "options": []
+    },
+    "ai_settings": {
+      "keys": "platform",
+      "call_from": "server",
+      "controls": [
+        "budget",
+        "usage",
+        "switch"
+      ],
+      "budget_rm_month": 1000
+    }
+  },
+  "ai": {
+    "features": [
+      {
+        "id": "F1",
+        "name": "AI MESSAGE PARSER",
+        "does": "summarise",
+        "runs": "arrives",
+        "input": "message from customer",
+        "output": "structured data (product name , quantity,date,addres ,recipe)",
+        "fields": [],
+        "reply_is_list": true,
+        "rules": [],
+        "example": null,
+        "result_goes": "reply",
+        "tools": [],
+        "model": "ollama:gigalab-local",
+        "uses_per_customer_month": 300,
+        "tokens_per_use": {
+          "in": 1040,
+          "out": 250
+        },
+        "usd_per_use": 0
+      },
+      {
+        "id": "F3",
+        "name": "Recipe & Ingredient Costing",
+        "does": "summarise",
+        "runs": "schedule",
+        "input": "message",
+        "output": "ingredient & recipe costing",
+        "fields": [],
+        "reply_is_list": true,
+        "rules": [],
+        "example": null,
+        "result_goes": "save",
+        "tools": [],
+        "model": "ollama:gigalab-local",
+        "uses_per_customer_month": 300,
+        "tokens_per_use": {
+          "in": 1040,
+          "out": 250
+        },
+        "usd_per_use": 0
+      }
+    ],
+    "routing": "one",
+    "tools": [],
+    "limits": {
+      "max_steps": 8,
+      "max_calls_per_tool": 5,
+      "max_tokens": 20000,
+      "max_seconds": 60
+    },
+    "skills": [],
+    "harness": {
+      "enforced_in": "code, not the prompt",
+      "checks": [
+        "the tool exists",
+        "the arguments match its schema",
+        "under its call limit",
+        "its permission",
+        "the signed-in tenant"
+      ],
+      "on_denied": "stop",
+      "on_tool_error": "review",
+      "actions_run_once": true,
+      "denied_tools_offered": false,
+      "final_answer_checked": true,
+      "trace": "every step, without personal data"
+    },
+    "state": {
+      "calls_per_person_minute": 10,
+      "calls_per_customer_day": 56,
+      "keep_from_each_call": null
+    },
+    "context": {
+      "sources": [],
+      "chat_turns": 1,
+      "chunk_words": null,
+      "top_k": null,
+      "never_in_prompt": []
+    },
+    "reliability": {
+      "never": [
+        "Never send anything outside without a person's approval",
+        "never invent a price, a date or a name"
+      ],
+      "cases": [
+        {
+          "input": "Hi nak tanya apa yang korang jual",
+          "expect": "Mostly makanan melayu, kuih muih ",
+          "type": "normal",
+          "severity": "minor"
+        }
+      ],
+      "checks_in": [
+        "length",
+        "injection"
+      ],
+      "checks_out": [
+        "rules",
+        "banned"
+      ],
+      "person_looks_when": [
+        "confidence"
+      ],
+      "alerts": [
+        "failures",
+        "cost"
+      ]
+    }
+  },
+  "business": {
+    "personal_data": false,
+    "payments": null,
+    "billing": "stripe",
+    "retention": "365",
+    "launch": [
+      "terms",
+      "onboarding",
+      "support",
+      "backups",
+      "monitoring"
+    ]
+  },
+  "coding_agent": {
+    "agent": "other",
+    "level": "ask",
+    "permission_mode": "default",
+    "extras": [
+      "hook",
+      "skill"
+    ],
+    "permissions_from": "Module 5 starter"
+  },
+  "decisions": {
+    "scope": {
+      "stage": "requirements",
+      "chosen": "must",
+      "suggested": "must"
+    },
+    "frontend": {
+      "stage": "stack",
+      "chosen": "html",
+      "suggested": "react",
+      "why": ""
+    },
+    "backend": {
+      "stage": "stack",
+      "chosen": "fastapi",
+      "suggested": "express",
+      "why": ""
+    },
+    "deploy": {
+      "stage": "stack",
+      "chosen": "paas",
+      "suggested": "paas"
+    },
+    "database": {
+      "stage": "stack",
+      "chosen": "sqlite",
+      "suggested": "postgres",
+      "why": ""
+    },
+    "tenancy": {
+      "stage": "core",
+      "chosen": "shared",
+      "suggested": "shared"
+    },
+    "keys": {
+      "stage": "core",
+      "chosen": "platform",
+      "suggested": "platform"
+    },
+    "callfrom": {
+      "stage": "core",
+      "chosen": "server",
+      "suggested": "server"
+    },
+    "format": {
+      "stage": "task",
+      "chosen": "json",
+      "suggested": "json"
+    },
+    "failure": {
+      "stage": "task",
+      "chosen": "repair",
+      "suggested": "repair"
+    },
+    "examples": {
+      "stage": "task",
+      "chosen": "2",
+      "suggested": "2"
+    },
+    "shape": {
+      "stage": "agent",
+      "chosen": "single",
+      "suggested": "single"
+    },
+    "skills": {
+      "stage": "agent",
+      "chosen": "prompt",
+      "suggested": "prompt"
+    },
+    "cache": {
+      "stage": "state",
+      "chosen": "none",
+      "suggested": "none"
+    },
+    "ratelimit": {
+      "stage": "state",
+      "chosen": "tenant_user",
+      "suggested": "tenant_user"
+    },
+    "knowledge": {
+      "stage": "context",
+      "chosen": "none",
+      "suggested": "none"
+    },
+    "memory": {
+      "stage": "context",
+      "chosen": "none",
+      "suggested": "none"
+    },
+    "caching": {
+      "stage": "context",
+      "chosen": "none",
+      "suggested": "none"
+    },
+    "evals": {
+      "stage": "reliability",
+      "chosen": "small",
+      "suggested": "rules",
+      "why": ""
+    },
+    "gate": {
+      "stage": "reliability",
+      "chosen": "90",
+      "suggested": "90"
+    },
+    "fallback": {
+      "stage": "reliability",
+      "chosen": "second",
+      "suggested": "second"
+    },
+    "logging": {
+      "stage": "reliability",
+      "chosen": "safe",
+      "suggested": "safe"
+    },
+    "model": {
+      "stage": "cost",
+      "chosen": "ollama:gigalab-local",
+      "suggested": "ollama:gigalab-local"
+    },
+    "routing": {
+      "stage": "cost",
+      "chosen": "one",
+      "suggested": "one"
+    },
+    "billing": {
+      "stage": "saas",
+      "chosen": "stripe",
+      "suggested": "stripe"
+    },
+    "retention": {
+      "stage": "saas",
+      "chosen": "365",
+      "suggested": "365"
+    },
+    "agent": {
+      "stage": "pack",
+      "chosen": "other",
+      "suggested": "claude",
+      "why": "Hermes"
+    }
+  },
+  "milestones": [
+    {
+      "id": "M0",
+      "title": "Skeleton",
+      "goal": "An empty app in the confirmed stack that starts, reads its settings from .env, and has one passing test.",
+      "tests": [
+        "The health route returns ok",
+        "The test command passes",
+        ".env is in .gitignore",
+        "blueprint.json is unchanged"
+      ]
+    },
+    {
+      "id": "M1",
+      "title": "Authentication",
+      "goal": "People sign in with the methods in docs/AUTH.md, from a proven library or service.",
+      "tests": [
+        "A signed-out request to a private page is refused",
+        "Sign-in and sign-out work in the provider's test mode",
+        "No password is stored in plain text, and no session token appears in a log",
+        "Sign-in works with: Email magic link",
+        "Sign-in works with: Google sign-in",
+        "Sign-in works with: Phone number with a one-time code",
+        "Sign-in works with: Email and password, from a proven library",
+        "An unverified email address cannot use the app",
+        "Repeated failed sign-ins are slowed down, then locked for a while",
+        "An owner or admin must pass two-factor sign-in",
+        "A password reset link works once, and expires"
+      ]
+    },
+    {
+      "id": "M2",
+      "title": "Authorization and tenants",
+      "goal": "Every business is a tenant and every user has a role; every route checks the role against the permission matrix in docs/AUTH.md, and denies by default.",
+      "tests": [
+        "Customer A cannot read or change customer B's records, on every table",
+        "A route with no permission rule is refused",
+        "Only a role allowed to manage the team can change a role"
+      ]
+    },
+    {
+      "id": "M3",
+      "title": "Data model and version 1 features",
+      "goal": "The tables in docs/DATA_MODEL.md and the version 1 features in docs/REQUIREMENTS.md, until their tests in the acceptance folder pass.",
+      "tests": [
+        "Every table has a tenant id, and every query filters by it",
+        "Every acceptance test of “AI MESSAGE PARSER” passes (tests/acceptance/test_f1_ai_message_parser.py)",
+        "Every acceptance test of “Order Management Dashboard” passes (tests/acceptance/test_f2_order_management_dashboard.py)",
+        "Every acceptance test of “Recipe & Ingredient Costing” passes (tests/acceptance/test_f3_recipe_ingredient_costing.py)",
+        "Every acceptance test of “Production Planning” passes (tests/acceptance/test_f4_production_planning.py)",
+        "Every acceptance test of “Automatic Grocery List” passes (tests/acceptance/test_f5_automatic_grocery_list.py)",
+        "Every acceptance test of “Profit & Loss Calculator” passes (tests/acceptance/test_f6_profit_loss_calculator.py)",
+        "Every acceptance test of “MESSAGE BOX” passes (tests/acceptance/test_f9_message_box.py)"
+      ]
+    },
+    {
+      "id": "M4",
+      "title": "AI settings and one model call",
+      "goal": "The server calls the model with the key from .env, inside the AI settings in docs/AI_SETTINGS.md, and logs the tokens, cost and time of every call.",
+      "tests": [
+        "A call with a fake provider returns the reply and the token counts",
+        "A missing key gives a clear error, not a crash",
+        "The key never appears in a log or a response",
+        "A customer over their monthly AI budget is paused with a clear message; an alert goes out at 80%",
+        "Each customer’s AI usage and cost this month show on their dashboard",
+        "Changing the model in settings changes the next call, with no code change"
+      ]
+    },
+    {
+      "id": "M5",
+      "title": "AI features",
+      "goal": "The AI features as docs/PROMPT_CONTRACT.md, TOOLS.md, STATE.md and CONTEXT.md say: the contract and its checks, tools and approvals, state and context.",
+      "tests": [
+        "A valid reply passes all three layers; broken JSON, a missing field and a rule break each fail with their own error",
+        "The failure policy runs when a check fails",
+        "AI MESSAGE PARSER: a typical request gives a reply that passes the checks",
+        "Recipe & Ingredient Costing: a typical request gives a reply that passes the checks",
+        "A message over the length limit is refused before any model call",
+        "A message that says “ignore your rules” does not change the reply",
+        "A reply that breaks a business rule is caught",
+        "A reply with a banned word or promise is caught",
+        "Call 11 from one person within a minute is refused; call 57 from one customer in a day is refused"
+      ]
+    },
+    {
+      "id": "M6",
+      "title": "Quality targets",
+      "goal": "Each target in docs/QUALITY.md has a test or a scripted check that passes.",
+      "tests": [
+        "Security: Every input is validated on the server",
+        "Security: Secrets live only in environment variables, never in code, logs or the browser",
+        "Security: HTTPS only, secure cookies and CSRF protection",
+        "Security: Rate limits on sign-in and on every public route",
+        "Security: A dependency audit runs on every build (pip-audit or npm audit)",
+        "Security: Reviewed against the OWASP Top 10 before launch",
+        "Security: Prompt-injection tests: text from customers never changes the rules",
+        "Reliability: Every error gives a clear message, and nothing is left half-saved",
+        "Reliability: Calls to outside services time out and retry with back-off",
+        "Reliability: Daily backups, restored once to prove they work",
+        "Reliability: Payments and actions are idempotent: a retry never runs them twice",
+        "Reliability: The AI release gate passes before every release",
+        "Performance: p95 page load under 2 seconds on a phone over 4G",
+        "Performance: p95 API response under 500 ms, not counting AI calls",
+        "Performance: A database index for every list and search",
+        "Performance: An AI reply starts within 5 seconds, streamed or with progress shown",
+        "The eval runner reports each case in evals/cases.json and the gate’s decision",
+        "The gate: all critical cases pass, 90% overall",
+        "Every never-rule and attack case passes",
+        "A reply the model was unsure of, or that needed a repair, waits for a person"
+      ]
+    },
+    {
+      "id": "M7",
+      "title": "SaaS business",
+      "goal": "Plans with limits, billing in the provider's test mode, data retention, and the launch checklist in docs/ARCHITECTURE.md.",
+      "tests": [
+        "A payment webhook is verified before a plan changes",
+        "Usage over the plan's limit is refused with an upgrade message",
+        "Sign-up asks the customer to accept the terms",
+        "A new customer can sign up and finish a first task without help",
+        "The support channel is shown on every page"
+      ]
+    },
+    {
+      "id": "M8",
+      "title": "Deploy and launch",
+      "goal": "Running on the internet over HTTPS, with backups, monitoring and a pricing page.",
+      "tests": [
+        "The live site answers over HTTPS",
+        "A backup is restored once, to prove it works",
+        "An uptime alert reaches your phone",
+        "An alert goes out when more than 5% of replies fail in an hour",
+        "An alert goes out when a day’s AI cost is twice the usual"
+      ]
+    }
+  ]
+}
