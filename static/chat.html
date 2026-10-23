@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order · NIVORA</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310492f'/%3E%3Ctext x='16' y='22' font-size='17' font-family='Georgia' fill='%23f5f1e9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="public-page">
+  <div class="card" style="padding:0;overflow:hidden">
+    <div style="background:#0d3a28;color:#f2ecdf;padding:18px 20px">
+      <div class="brand" style="font-size:20px;padding:0">NIVORA</div>
+      <div id="biz" style="color:#c8d7c8;font-size:13px;margin-top:4px">Loading…</div>
+    </div>
+    <div class="chat-box" style="height:auto">
+      <div class="messages" id="messages" style="min-height:300px;max-height:58vh">
+        <div class="empty">Opening the chat…</div>
+      </div>
+      <form class="composer" id="sendForm">
+        <input name="body" type="text" placeholder="Tulis tempahan anda… contoh: 20 biji kuih lapis untuk esok" autocomplete="off" maxlength="2000">
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="small muted" style="text-align:center;margin-top:14px">
+    Write your order: product, quantity, date and address.<br>
+    Need help? support@nivora.app · WhatsApp +60 12-345 6789
+  </div>
+</div>
+<div id="toast"></div>
+<script src="/static/chat.js"></script>
+</body>
+</html>

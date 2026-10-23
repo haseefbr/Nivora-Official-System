@@ -1,0 +1,62 @@
+/* Chatbot: a floating panel shared by the seller app and the shop page. */
+.nivora-bot { position: fixed; right: 22px; bottom: 22px; z-index: 60; font-family: inherit; }
+.bot-fab {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #284734; color: #FFFDF8; border: 0; cursor: pointer;
+  padding: 12px 18px 12px 14px; border-radius: 999px;
+  box-shadow: 0 14px 30px -14px rgba(27, 49, 36, .7);
+  font: inherit; font-size: 14px; font-weight: 600;
+  transition: transform .16s ease, background .16s ease;
+}
+.bot-fab:hover { transform: translateY(-2px); background: #1B3124; }
+.bot-fab:focus-visible { outline: 3px solid #A8B89A; outline-offset: 2px; }
+.bot-fab-label { letter-spacing: .01em; }
+
+.nivora-bot .bot-panel {
+  width: min(372px, calc(100vw - 32px)); height: min(520px, calc(100vh - 120px));
+  display: flex; flex-direction: column; overflow: hidden;
+  background: #FFFDF8; border: 1px solid #E5DFD1; border-radius: 20px;
+  box-shadow: 0 26px 60px -28px rgba(27, 49, 36, .55);
+}
+.bot-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 14px 16px; background: #284734; color: #FFFDF8;
+}
+.bot-head strong { display: block; font-size: 14px; letter-spacing: .01em; }
+.bot-head small { color: #C7D3BC; font-size: 11.5px; }
+.bot-close {
+  background: rgba(255, 253, 248, .12); color: #FFFDF8; border: 0; cursor: pointer;
+  width: 30px; height: 30px; border-radius: 9px; font-size: 20px; line-height: 1;
+}
+.bot-close:hover { background: rgba(255, 253, 248, .22); }
+
+.nivora-bot .bot-log { flex: 1; min-height: 0; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.bot-msg {
+  max-width: 86%; padding: 9px 12px; border-radius: 14px; font-size: 13.5px; line-height: 1.45;
+  white-space: normal; word-wrap: break-word;
+}
+.bot-msg.bot { background: #F1F4EC; color: #292D29; border-bottom-left-radius: 5px; align-self: flex-start; }
+.bot-msg.me { background: #284734; color: #FFFDF8; border-bottom-right-radius: 5px; align-self: flex-end; }
+.bot-msg.thinking { color: #6F6A60; font-style: italic; }
+.bot-msg.error { background: #FBEDE9; color: #8C3B2A; }
+.bot-time { align-self: flex-start; font-size: 10.5px; color: #9A9488; }
+
+.bot-form { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid #EFE9DC; }
+.bot-form input {
+  flex: 1; border: 1px solid #E2DCCE; background: #FBF9F3; border-radius: 11px;
+  padding: 10px 12px; font: inherit; font-size: 13.5px; color: #292D29;
+}
+.bot-form input:focus { outline: none; border-color: #284734; background: #FFFDF8; }
+.bot-form button {
+  width: 42px; border: 0; border-radius: 11px; background: #284734; color: #FFFDF8;
+  cursor: pointer; display: grid; place-items: center;
+}
+.bot-form button:disabled { opacity: .5; cursor: progress; }
+.bot-foot { margin: 0; padding: 0 14px 12px; font-size: 10.5px; color: #9A9488; }
+
+@media (max-width: 640px) {
+  .nivora-bot { right: 14px; bottom: 14px; }
+  .nivora-bot .bot-panel { width: calc(100vw - 24px); height: min(70vh, 520px); }
+  .bot-fab-label { display: none; }
+  .bot-fab { padding: 13px; border-radius: 50%; }
+}

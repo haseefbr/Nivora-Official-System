@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIVORA · orders, costs and production</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="stylesheet" href="/static/bot.css">
+<link rel="icon" href="/static/brand/favicon.png">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand-block">
+      <img src="/static/brand/nivora-mark.png" alt="NIVORA" class="side-logo">
+      <div>
+        <div class="brand-name">NIVORA</div>
+        <div class="brand-sub">ORDER &amp; PROFIT</div>
+      </div>
+    </div>
+    <div class="biz">
+      <span>Business</span>
+      <strong id="bizName">—</strong>
+      <div id="bizPlan" class="small" style="color:#a8bda9"></div>
+    </div>
+    <nav id="nav">
+      <button data-tab="orders" class="active" data-i18n="nav.orders">Orders</button>
+      <button data-tab="parser" data-i18n="nav.parser">AI message parser</button>
+      <button data-tab="recipes" data-i18n="nav.recipes">Recipes &amp; costing</button>
+      <button data-tab="production" data-i18n="nav.production">Production plan</button>
+      <button data-tab="grocery" data-i18n="nav.grocery">Grocery list</button>
+      <button data-tab="profit" data-i18n="nav.profit">Profit &amp; loss</button>
+      <button data-tab="inbox" data-i18n="nav.inbox">Message box <span id="unreadDot" class="dot" hidden></span></button>
+      <button data-tab="settings" data-i18n="nav.settings">Settings</button>
+    </nav>
+    <div class="side-foot">
+      <a id="shopLinkSide" href="/shop" target="_blank" rel="noopener">Open my shop page ↗</a>
+      <div style="margin-top:8px">Need a hand?</div>
+      <div><a href="mailto:support@nivora.app">support@nivora.app</a></div>
+      <div>WhatsApp +60 12-345 6789</div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">Orders</h1>
+        <div class="sub" id="pageSub">Every active order, payment and delivery in one place.</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="lang-seg" id="langSeg" title="Language">
+        <button data-lang="en">EN</button>
+        <button data-lang="bm">BM</button>
+      </div>
+      <div class="bell-wrap">
+        <button id="bell" class="bell" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M18 15v-4a6 6 0 1 0-12 0v4l-2 3h16l-2-3Z"/><path d="M10 21h4"/>
+          </svg>
+          <span id="bellCount" class="bell-count" hidden>0</span>
+        </button>
+        <div id="bellPanel" class="bell-panel" hidden>
+          <div class="bell-head"><strong data-i18n="notify.title">Notifications</strong>
+            <button class="btn link small" data-action="read-all" data-i18n="notify.clear">Mark all read</button></div>
+          <div id="bellList"></div>
+        </div>
+      </div>
+      <button id="signOut" class="btn ghost small" data-i18n="action.signOut">Sign out</button>
+    </header>
+
+    <div class="content" id="view">
+      <div class="grid c4">
+        <div class="card"><div class="skeleton" style="width:60%"></div></div>
+        <div class="card"><div class="skeleton" style="width:60%"></div></div>
+        <div class="card"><div class="skeleton" style="width:60%"></div></div>
+        <div class="card"><div class="skeleton" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <footer class="support">
+      <span>Support: <a href="mailto:support@nivora.app">support@nivora.app</a></span>
+      <span>WhatsApp <a href="https://wa.me/60123456789">+60 12-345 6789</a></span>
+      <span>Mon–Sat, 9am–6pm (MYT)</span>
+      <span class="spacer"></span>
+      <span><a href="/api/export?format=json" id="exportLink">Export my data</a></span>
+    </footer>
+  </main>
+</div>
+
+<div id="toast"></div>
+<div id="modalRoot"></div>
+<script src="/static/i18n.js"></script>
+<script src="/static/app.js"></script>
+<div id="botMount" data-mode="seller"></div>
+<script src="/static/bot.js" defer></script>
+</body>
+</html>

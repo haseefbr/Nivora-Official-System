@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · NIVORA</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="icon" href="/static/brand/favicon.png">
+</head>
+<body>
+<div class="auth-wrap">
+  <section class="auth-art">
+    <div>
+      <img src="/static/brand/nivora-lockup.png" alt="NIVORA" style="width:210px;border-radius:12px;display:block">
+      <h2>One system for the kitchen and the customer.</h2>
+      <p>Order in, plan the batch, price the plate. The buyer sees a menu; the seller sees the work.</p>
+      <ul>
+        <li><b>01</b><span>A buyer orders from your shop link — no app, no account.</span></li>
+        <li><b>02</b><span>The order lands on the seller's dashboard, priced and counted.</span></li>
+        <li><b>03</b><span>Recipes, batches, groceries and profit follow automatically.</span></li>
+      </ul>
+    </div>
+    <div class="small" style="color:#a8bda9">
+      Support: support@nivora.app · WhatsApp +60 12-345 6789
+    </div>
+  </section>
+
+  <section class="auth-panel">
+    <div class="auth-card">
+      <!-- step 1: seller or buyer -->
+      <div id="roleGate">
+        <h1>How are you using NIVORA?</h1>
+        <p class="muted small">Choose one. Buyers order in a shop; sellers run the business.</p>
+        <div class="role-grid">
+          <button type="button" class="role-card" data-role="seller">
+            <span class="role-icon">🍽</span>
+            <strong>I'm a seller</strong>
+            <span>Manage orders, menu, recipes and profit.</span>
+            <em>Sign in to the dashboard →</em>
+          </button>
+          <button type="button" class="role-card" data-role="buyer">
+            <span class="role-icon">🛍</span>
+            <strong>I'm a buyer</strong>
+            <span>Order food from the shop link you were given.</span>
+            <em>Open the shop →</em>
+          </button>
+        </div>
+        <div id="buyerBox" hidden style="margin-top:14px">
+          <label class="field">Shop link or code
+            <input id="buyerSlug" type="text" placeholder="dapur-aminah">
+          </label>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" type="button" data-action="open-shop">Open this shop</button>
+            <button class="btn ghost" type="button" data-action="back-roles">Back</button>
+          </div>
+          <p class="hint" style="margin-top:10px">Your seller's link looks like <span class="mono">/shop?b=the-shop-code</span>.</p>
+        </div>
+        <div class="auth-foot">Support: support@nivora.app · WhatsApp +60 12-345 6789</div>
+      </div>
+
+      <!-- step 2: seller sign-in -->
+      <div id="authShell" hidden>
+        <button class="btn link" type="button" data-action="back-roles" style="margin-bottom:8px">← Back</button>
+        <h1 id="authTitle">Welcome back</h1>
+        <p class="muted small" id="authSub">Sign in to your business.</p>
+
+        <div class="auth-tabs" id="authTabs">
+          <button data-mode="password" class="active">Password</button>
+          <button data-mode="magic">Email link</button>
+          <button data-mode="phone">Phone code</button>
+          <button data-mode="signup">Create account</button>
+        </div>
+
+        <div id="devHint" class="infobox small" hidden></div>
+        <div id="authBody"></div>
+
+        <form class="auth-form" id="googleForm" hidden style="margin-top:12px">
+          <div id="gsiButton"></div>
+        </form>
+
+        <div class="auth-foot">
+          Protected by two-factor sign-in for owners. No card details are ever stored.
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="toast"></div>
+<script src="/static/login.js"></script>
+</body>
+</html>

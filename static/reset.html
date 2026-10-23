@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New password · NIVORA</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310492f'/%3E%3Ctext x='16' y='22' font-size='17' font-family='Georgia' fill='%23f5f1e9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="public-page" style="max-width:440px;padding-top:60px">
+  <div class="card">
+    <h1 style="font-size:26px">Choose a new password</h1>
+    <p class="muted small">The link works once and expires 30 minutes after it was sent.</p>
+    <form class="auth-form" id="resetForm" style="margin-top:16px">
+      <label class="field">New password
+        <input name="password" type="password" minlength="10" required placeholder="At least 10 characters">
+      </label>
+      <label class="field">Repeat it
+        <input name="repeat" type="password" minlength="10" required placeholder="Same again">
+      </label>
+      <button class="btn" type="submit">Save the new password</button>
+    </form>
+    <div id="done" hidden>
+      <div class="infobox" style="margin-top:14px">Password changed. Every other session was signed out.</div>
+      <a class="btn" href="/login" style="margin-top:12px">Sign in</a>
+    </div>
+    <div class="auth-foot">Support: support@nivora.app · WhatsApp +60 12-345 6789</div>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="/static/reset.js"></script>
+</body>
+</html>

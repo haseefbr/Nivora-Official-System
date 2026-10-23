@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIVORA · Order food</title>
+<link rel="stylesheet" href="/static/shop.css">
+<link rel="stylesheet" href="/static/bot.css">
+<link rel="icon" href="/static/brand/favicon.png">
+</head>
+<body>
+<header class="shop-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#home" aria-label="NIVORA home">
+      <img src="/static/brand/nivora-mark.png" alt="" class="brand-mark">
+      <span class="brand-text">NIVORA<small>FOOD</small></span>
+    </a>
+    <nav class="shop-nav">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#orders">My orders</a>
+    </nav>
+    <div class="head-actions">
+      <button id="cartBtn" class="cart-btn" aria-label="Open basket">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Order directly · no app needed</span>
+        <h1 id="shopTagline">Good food, made for your everyday.</h1>
+        <p id="shopIntro">Fresh from the kitchen, delivered or ready to pick up. Choose what you like, we pass it straight to the kitchen.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#menu">Explore the menu</a>
+          <a class="btn ghost" href="#about">About this kitchen</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>Fresh daily</dt><dd>Cooked to order</dd></div>
+          <div><dt>Delivery</dt><dd>RM4.00 in town</dd></div>
+          <div><dt>Reply</dt><dd>Chat with the seller</dd></div>
+        </dl>
+      </div>
+      <div class="hero-card">
+        <img src="/static/brand/nivora-mark.png" alt="" class="hero-mark">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <div>
+            <strong id="signatureName">Loading the menu…</strong>
+            <small id="signaturePrice"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="menu">
+    <div class="wrap">
+      <header class="section-head">
+        <span class="eyebrow">The menu</span>
+        <h2 id="shopName">NIVORA</h2>
+        <p>Everything is priced by the kitchen. Tap a dish to add it to your basket.</p>
+      </header>
+      <div class="chips" id="categoryChips"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+      <div class="empty" id="menuEmpty" hidden>No dishes match that search.</div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <span class="eyebrow">The kitchen</span>
+        <h2 id="aboutName">A small kitchen, run properly.</h2>
+        <p id="aboutText">Every order you send here goes straight to the seller's dashboard with the dishes, the total and your details — so nothing is lost in a chat thread.</p>
+        <div class="about-points">
+          <div><strong>One tap ordering</strong><span>Your basket becomes a priced order.</span></div>
+          <div><strong>Talk to the seller</strong><span>A chat link comes with your order.</span></div>
+          <div><strong>Your history</strong><span>Your last orders, kept by phone number.</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>Contact</h3>
+        <p class="small" id="shopAddress">—</p>
+        <p class="small" id="shopPhone">—</p>
+        <a class="btn ghost" id="chatLink" href="#" hidden>Open chat with the seller</a>
+        <div class="divider"></div>
+        <p class="small muted">Support: support@nivora.app · WhatsApp +60 12-345 6789</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="orders-section" id="orders">
+    <div class="wrap">
+      <header class="section-head">
+        <span class="eyebrow">Your history</span>
+        <h2>My orders</h2>
+        <p>Orders placed from this phone. We look them up by the number you used.</p>
+      </header>
+      <div id="myOrders" class="orders-list"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="shop-foot">
+  <div class="wrap foot-row">
+    <span>Powered by NIVORA · order &amp; profit for food sellers</span>
+    <span><a href="/login">Seller sign-in</a></span>
+  </div>
+</footer>
+
+<!-- basket -->
+<div class="overlay" id="cartOverlay" hidden>
+  <aside class="drawer" id="cartDrawer" aria-label="Your basket">
+    <header class="drawer-head">
+      <div>
+        <h3>Your basket</h3>
+        <small id="cartSubtitle">0 items</small>
+      </div>
+      <button class="icon-btn" data-close="cart">✕</button>
+    </header>
+    <div class="drawer-body" id="cartItems"></div>
+    <footer class="drawer-foot" id="cartFooter" hidden>
+      <div class="totals">
+        <div><span>Subtotal</span><span id="cartSubtotal">RM0.00</span></div>
+        <div><span>Delivery</span><span id="cartFee">RM0.00</span></div>
+        <div class="grand"><span>Total</span><span id="cartTotal">RM0.00</span></div>
+      </div>
+      <button class="btn primary wide" id="checkoutBtn">Continue to checkout</button>
+    </footer>
+  </aside>
+</div>
+
+<!-- checkout -->
+<div class="overlay center" id="checkoutOverlay" hidden>
+  <div class="modal" aria-label="Checkout">
+    <header class="modal-head">
+      <h3>Complete your order</h3>
+      <button class="icon-btn" data-close="checkout">✕</button>
+    </header>
+    <form id="checkoutForm" class="modal-body">
+      <div class="field-row">
+        <label>Your name<input name="customer_name" required placeholder="Nurul Ain"></label>
+        <label>Phone<input name="phone" type="tel" required placeholder="012-3456789"></label>
+      </div>
+      <div class="field-row">
+        <label>Order type
+          <select name="order_type" id="orderType">
+            <option value="Delivery">Delivery (RM4.00)</option>
+            <option value="Pickup">Self-pickup (free)</option>
+          </select>
+        </label>
+        <label>Date<input name="delivery_date" id="deliveryDate" type="date" required></label>
+      </div>
+      <label class="full" id="addressField">Address
+        <textarea name="address" rows="2" placeholder="Street, unit, postcode"></textarea>
+      </label>
+      <label class="full">Payment
+        <select name="payment_method">
+          <option>Online banking</option>
+          <option>E-wallet</option>
+          <option>Cash on delivery</option>
+        </select>
+      </label>
+      <label class="full">Note for the kitchen (optional)
+        <input name="notes" placeholder="Less spicy, ring the bell">
+      </label>
+      <div class="checkout-totals">
+        <div><span>Items</span><span id="checkoutItems">RM0.00</span></div>
+        <div><span>Delivery</span><span id="checkoutFee">RM0.00</span></div>
+        <div class="grand"><span>Total</span><span id="checkoutTotal">RM0.00</span></div>
+      </div>
+      <p class="form-error" id="checkoutError" hidden></p>
+      <button class="btn primary wide" type="submit" id="placeOrder">Place order</button>
+      <p class="small muted center">The seller is notified the moment you order.</p>
+    </form>
+  </div>
+</div>
+
+<!-- success -->
+<div class="overlay center" id="successOverlay" hidden>
+  <div class="modal success">
+    <div class="tick">✓</div>
+    <h3>Order sent to the kitchen</h3>
+    <p class="small muted">The seller has been notified and will confirm shortly.</p>
+    <div class="receipt" id="successReceipt"></div>
+    <button class="btn primary wide" id="successClose">See my orders</button>
+    <a class="btn ghost wide" id="successChat" href="#" hidden>Chat with the seller</a>
+  </div>
+</div>
+
+<div id="toast" class="toast-stack"></div>
+<script src="/static/shop.js"></script>
+<div id="botMount" data-mode="buyer" data-name=""></div>
+<script src="/static/bot.js" defer></script>
+</body>
+</html>
